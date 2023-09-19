@@ -1,0 +1,62 @@
+1. Java와 객체 지향 프로그래밍에 대해 정리하기
+
+- 자바는 썬 마이크로시스템즈에서 개발하여 1996년 1월에 공식적으로 발표한 객체지향 프로그래밍 언어이다.
+자바의 특징으로는 객체지향 언어이며 운영체제에 독립적이기에 이식성이 높다. 자동적으로 메모리 관리를 하고 네트워크, 분산처리, 멀티쓰레드, 동적 로딩을 지원한다. 
+
+- 객체 지향 프로그래밍은 프로그래밍에서 필요한 데이터를 추상화시켜 상태와 행위를 가진 객체로 만들고, 객체들간의 상호작용을 통해 로직을 구성하는 프로그래밍 방법이다. 
+객체지향 프로그래밍의 장점은 코드의 재사용성이 높으며 유지보수가 쉽고 클래스 단위로 모듈화시켜 개발할 수 있기에 업무 분담하기가 쉽다. 단점으로는 처리 속도가 상대적으로 느리고 객체가 많으면 용량이 커질 수 있으며 설계시 많은 노력과 시간이 필요하다.
+
+- 객체 지향 프로그래밍의 특징은 4가지로 추상화, 캡슐화, 상속, 다형성이다.
+ 추상화는객체에서 공통된 속성과 행위를 추출하는 것으로 불필요한 정보는 숨기고 중요한 정보만을 표현함으로써 프로그램을 간단하게 만든다.
+ 캡슐화는 데이터 구조와 데이터를 다루는 방법들을 결합시켜 묶는 것으로 낮은 결합도를 유지할 수 있도록 설계하는 것이다.
+ 상속은 클래스의 속성과 행위를 하위 클래스에 물려주거나 하위 클래스가 상위 클래스의 속성과 행위를 물려받는 것으로 새로운 클래스가 기존의 클래스의 데이터와 연산을 사용할 수 있게하는 기능이다.
+ 다형성은 어떠한 요소에 여러 개념을 넣어 놓는 것이다.
+
+ 2.
+
+ class Calcul implements Calculator {
+    public int plus(int a, int b){
+        return a + b;
+    }
+    public int minus(int a, int b){
+        return a - b;
+    }
+    public int mul(int a, int b){
+        return a * b;
+    }
+    public int div(int a, int b){
+        return a / b;
+    }
+}
+
+class Cat extends Animal{
+    public void speak() {
+        System.out.println("cat says Meow!")
+    }
+}
+
+class Dog extends Animal{
+    public void speak() {
+        System.out.println("dog says Woof!")
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Calculator calculator = new Calcul();
+
+        System.out.println("1234 + 4321 = " + calculator.plus(1234, 4321));
+        System.out.println("911 - 170 = " + calculator.minus(911, 170));
+        System.out.println("2 * 3 = " + calculator.mul(2, 3));
+        System.out.println("33 / 11 = " + calculator.div(33, 11));
+
+        System.out.println("\n");
+
+        Cat cat = new Cat();
+        Dog dog = new Dog();
+        Animal[] animals = {cat, dog};
+        for (Animal animal : animals) {
+            animal.speak();
+        }
+    }
+}
